@@ -30,6 +30,25 @@ Usage
     }); 
 ```
 
+How to build app and test?
+-
+__1. Build App using [IntelXDK](http://xdk.intel.com):__
+- Download the repo
+- Download and install Intel XDK
+- Open IntelXDK > New Project > Import and point to this folder
+- Open index.html in editor and update Oauth2 options (`client_id`, `client_secret`, ...) for the service you want to test
+- Test in the IntelXDK Emulator
+- Build your Cordova app by going to _Build_ tab in IntelXDK
+- Install App on device
+
+__2. Build App using [Phonegap build](http://build.phonegap.com):__
+- Download the repo
+- Open index.html in any editor and update Oauth2 options (`client_id`, `client_secret`, ...) for the service you want to test
+- Zip files `index.html`, `cordova.oauth2.js` and `config.xml`
+- upload the zip in http://build.phonegap.com to build Cordova App
+- Install App on device
+ 
+
 Services Tested
 -
 These Oauth2 services have been tested with this plugin sucessfully:
@@ -37,3 +56,5 @@ These Oauth2 services have been tested with this plugin sucessfully:
 - __Facebook__ 
 - __Instagram__ 
 - __Foursquare__ 
+
+_* Let me know if any service is not working, feel free to send any pull-request for improvements._
