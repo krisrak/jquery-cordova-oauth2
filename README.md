@@ -13,7 +13,7 @@ Features
 Usage
 -
 
-```
+```javascript
     $.oauth2({
         auth_url: '',           // required
         response_type: '',      // required  - "code"/"token"
@@ -32,21 +32,21 @@ Usage
 
 How to build app and test?
 -
-__1. Build App using [IntelXDK](http://xdk.intel.com):__
-- Download the repo
-- Download and install Intel XDK
-- Open IntelXDK > New Project > Import and point to this folder
-- Open index.html in editor and update Oauth2 options (`client_id`, `client_secret`, ...) for the service you want to test
-- Test in the IntelXDK Emulator
-- Build your Cordova app by going to _Build_ tab in IntelXDK
-- Install App on device
+__1. Build App using [Intel XDK](http://xdk.intel.com):__
+- Download this repo.
+- Download and install __Intel XDK__.
+- Open Intel XDK > New Project > __Import__ and point to this folder.
+- Open __index.html__ in editor and update __Oauth2 options__ (`client_id`, `client_secret`, ...) for the service you want to test.
+- Test in the Intel XDK __Emulator__.
+- Build your Cordova app by going to _Build_ tab in Intel XDK.
+- Install App on device.
 
 __2. Build App using [Phonegap build](http://build.phonegap.com):__
-- Download the repo
-- Open index.html in any editor and update Oauth2 options (`client_id`, `client_secret`, ...) for the service you want to test
-- Zip files `index.html`, `cordova.oauth2.js` and `config.xml`
-- upload the zip in http://build.phonegap.com to build Cordova App
-- Install App on device
+- Download this repo.
+- Open __index.html__ in any editor and update __Oauth2 options__ (`client_id`, `client_secret`, ...) for the service you want to test.
+- __Zip__ files `index.html`, `cordova.oauth2.js` and `config.xml`.
+- Upload the zip in __http://build.phonegap.com__ to build Cordova App.
+- Install App on device.
  
 
 Services Tested
