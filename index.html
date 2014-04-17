@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="cordova.oauth2.js"></script>
+        <script type="text/javascript" src="xhr.js"></script>
+        <script>
+            
+// template for new oauth2 service            
+function oauth2_login() {
+    $.oauth2({
+        auth_url: '',           // required
+        response_type: '',      // required  - "code"/"token"
+        token_url: '',          // required for "code"
+        logout_url: '',         // recommended if available
+        client_id: '',          // required
+        client_secret: '',      // required
+        redirect_uri: '',       // required - any dummy url http://www.yourcompany.com
+        scope: ''               // optional
+    }, function(token, response){
+        // do something with token or response
+        $("#logs").append("<p class='success'><b>access_token: </b>"+token+"</p>");
+        $("#logs").append("<p class='success'><b>response: </b>"+JSON.stringify(response)+"</p>");
+    }, function(error, response){
+        // do something with error object
+        $("#logs").append("<p class='error'><b>error: </b>"+JSON.stringify(error)+"</p>");
+        $("#logs").append("<p class='error'><b>response: </b>"+JSON.stringify(response)+"</p>");
+    }); 
+}
+       
+        </script>
+        <style>
+            body{background-color:white;font-family: Arial;margin: 0}
+            .content {padding: 0 20px}
+            .button {text-align: center;padding: 10px;border-radius: 10px;border: 1px solid #777;background-color: #ddd}
+            h1 {text-align: center}
+            p.success {background-color: #efe; padding:5px}
+            p.error {background-color: #fee; padding:5px}
+        </style>    
+        <title>Oauth2 Cordova XDK</title>
+    </head>
+    <body>
+        <div class="content">
+            <h1>Oauth2</h1>
+            <p><div class="button" onclick="oauth2_login()">Oauth2 Login</div></p>
+            <div id="logs"></div>
+        </div>
+    </body>
+</html>
