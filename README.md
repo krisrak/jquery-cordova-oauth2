@@ -22,7 +22,7 @@ Usage
         client_id: '',          // required
         client_secret: '',      // required
         redirect_uri: '',       // required - any dummy url http://www.yourcompany.com
-        scope: ''               // optional
+        other_parms: {}         // optional params object for scope, state, ...
     }, function(token, response){
         // do something with token or response
     }, function(error, response){
