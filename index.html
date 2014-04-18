@@ -12,13 +12,13 @@
 function oauth2_login() {
     $.oauth2({
         auth_url: '',           // required
-        response_type: '',      // required  - "code"/"token"
-        token_url: '',          // required for "code"
+        response_type: '',      // required - "code"/"token"
+        token_url: '',          // required if response_type = 'code'
         logout_url: '',         // recommended if available
         client_id: '',          // required
         client_secret: '',      // required
-        redirect_uri: '',       // required - any dummy url http://www.yourcompany.com
-        scope: ''               // optional
+        redirect_uri: '',       // required - some dummy url
+        other_params: {}        // optional params object for scope, state, display...
     }, function(token, response){
         // do something with token or response
         $("#logs").append("<p class='success'><b>access_token: </b>"+token+"</p>");
