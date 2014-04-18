@@ -1,5 +1,5 @@
 /*
- * cordova.oauth2.js - v0.1.0
+ * cordova.oauth2.js - v0.1.1
  * 
  * jQuery plugin to do Oauth2 login using either authorization code
  * grant or implicit grant method in a Cordova application
@@ -15,7 +15,7 @@
  *        client_id: '',        // required
  *        client_secret: '',    // required
  *        redirect_uri: '',     // required - some dummy url
- *        scope: ''             // optional
+ *        other_params: {}      // optional params object for scope, state, display...
  *    }, function(token, response){
  *          // do something with token and response
  *    }, function(error){
@@ -73,13 +73,13 @@
         if(!checkOauth2Params(options)) return;
 
         // build oauth login url
-        var login_url = options.auth_url + '?' + $.param({
+        var paramObj = {
             client_id: options.client_id,
             redirect_uri: options.redirect_uri,
-            response_type: options.response_type,
-            scope: options.scope,
-            display: options.display
-        });
+            response_type: options.response_type
+        };
+        $.extend(paramObj, options.other_params);
+        var login_url = options.auth_url + '?' + $.param(paramObj);
 
         // open Cordova inapp-browser with login url
         var loginWindow = window.open(login_url, '_blank', 'location=yes');
