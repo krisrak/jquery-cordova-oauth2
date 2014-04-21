@@ -22,7 +22,7 @@ Usage
         client_id: '',          // required
         client_secret: '',      // required
         redirect_uri: '',       // required - any dummy url http://www.yourcompany.com
-        other_parms: {}         // optional params object for scope, state, ...
+        other_params: {}         // optional params object for scope, state, ...
     }, function(token, response){
         // do something with token or response
     }, function(error, response){
@@ -44,7 +44,7 @@ This example show how to make Google Oauth2 call, notice the `scope` parameter i
         client_id: 'CLIENT-ID-FROM-GOOGLE',
         client_secret: 'CLIENT-SECRET-FROM-GOOGLE',
         redirect_uri: 'http://www.yourwebsite.com/oauth2callback',
-        other_parms: {scope:'profile'}
+        other_params: {scope:'profile'}
     }, function(token, response){
         makeAPICalls(token);
     }, function(error, response){
@@ -62,7 +62,7 @@ Notice that `token_url` is not required for Implicit grant and `logout_url` is n
         client_id: 'CLIENT-ID-FROM-FACEBOOK',
         client_secret: 'CLIENT-SECRET-FROM-FACEBOOK',
         redirect_uri: 'http://www.yourwebsite.com/oauth2callback',
-        other_parms: {scope: 'basic_info', display: 'popup'}
+        other_params: {scope: 'basic_info', display: 'popup'}
     }, function(token, response){
         makeAPICalls(token);
     }, function(error, response){
