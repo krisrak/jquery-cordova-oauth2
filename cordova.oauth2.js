@@ -13,7 +13,7 @@
  *        token_url: '',        // required if response_type = 'code'
  *        logout_url: '',       // recommended if available
  *        client_id: '',        // required
- *        client_secret: '',    // required
+ *        client_secret: '',    // required if response_type = 'code'
  *        redirect_uri: '',     // required - some dummy url
  *        other_params: {}      // optional params object for scope, state, display...
  *    }, function(token, response){
@@ -34,9 +34,9 @@
         var checkOauth2Params = function(options){
             var missing = "";
             if(!options.client_id) {missing += " client_id"}
-            if(!options.client_secret) {missing += " client_secret"}
             if(!options.auth_url) {missing += " auth_url"}
             if(!options.response_type) {missing += " response_type"}
+            if(!options.client_secret && options.response_type == "code") {missing += " client_secret"}
             if(!options.token_url && options.response_type == "code") {missing += " token_url"}
             if(!options.redirect_uri) {missing += " redirect_uri"}  
             if(missing){

@@ -16,7 +16,7 @@ function oauth2_login() {
         token_url: '',          // required if response_type = 'code'
         logout_url: '',         // recommended if available
         client_id: '',          // required
-        client_secret: '',      // required
+        client_secret: '',      // required if response_type = 'code'
         redirect_uri: '',       // required - some dummy url
         other_params: {}        // optional params object for scope, state, display...
     }, function(token, response){
