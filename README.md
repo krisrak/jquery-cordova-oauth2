@@ -10,6 +10,8 @@ Features
 - Supports Oauth2 authorization code grant flow (server explicit)
 - Supports Oauth2 implicit grant flow (client implicit)
 
+  _[Implicit grant is recomended for Cordova apps since it does not require app to store client_secret]_
+
 Usage
 -
 
@@ -17,10 +19,10 @@ Usage
     $.oauth2({
         auth_url: '',           // required
         response_type: '',      // required  - "code"/"token"
-        token_url: '',          // required for "code"
+        token_url: '',          // required for response_type ="code"
         logout_url: '',         // recommended if available
         client_id: '',          // required
-        client_secret: '',      // required
+        client_secret: '',      // required for response_type ="code"
         redirect_uri: '',       // required - any dummy url http://www.yourcompany.com
         other_params: {}         // optional params object for scope, state, ...
     }, function(token, response){
@@ -53,14 +55,13 @@ This example show how to make Google Oauth2 call, notice the `scope` parameter i
 ```
 
 __2) Facebook Oauth2 (Implicit grant):__
-Notice that `token_url` is not required for Implicit grant and `logout_url` is not specified since facebook does not not have a logout url. Facebook also required a special `display` parameter to be passed in the URL, this is specified in the `other_params`.
+Notice that `token_url` and `client_secret` is not required for Implicit grant and `logout_url` is not specified since facebook does not not have a logout url. Facebook also required a special `display` parameter to be passed in the URL, this is specified in the `other_params`.
 
 ```javascript
     $.oauth2({
         auth_url: 'https://www.facebook.com/dialog/oauth',
         response_type: 'token',
         client_id: 'CLIENT-ID-FROM-FACEBOOK',
-        client_secret: 'CLIENT-SECRET-FROM-FACEBOOK',
         redirect_uri: 'http://www.yourwebsite.com/oauth2callback',
         other_params: {scope: 'basic_info', display: 'popup'}
     }, function(token, response){
