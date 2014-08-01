@@ -24,12 +24,13 @@ Usage
         client_id: '',          // required
         client_secret: '',      // required for response_type ="code"
         redirect_uri: '',       // required - any dummy url http://www.yourcompany.com
-        other_params: {}         // optional params object for scope, state, ...
+        popup_params: '',       // optional if you want to override the default 'location=yes'
+        other_params: {}        // optional params object for scope, state, ...
     }, function(token, response){
         // do something with token or response
     }, function(error, response){
         // do something with error object
-    }); 
+    });
 ```
 
 __Example Oauth2 Calls:__
@@ -51,7 +52,7 @@ This example show how to make Google Oauth2 call, notice the `scope` parameter i
         makeAPICalls(token);
     }, function(error, response){
         alert(error);
-    }); 
+    });
 ```
 
 __2) Facebook Oauth2 (Implicit grant):__
@@ -68,7 +69,7 @@ Notice that `token_url` and `client_secret` is not required for Implicit grant a
         makeAPICalls(token);
     }, function(error, response){
         alert(error);
-    }); 
+    });
 ```
 
 
@@ -91,16 +92,16 @@ __2. Build App using [Phonegap build](http://build.phonegap.com):__
 - Install App on device.
 
 __3. Build App using [Cordova CLI](http://cordova.apache.org/docs/en/3.3.0/guide_cli_index.md.html#The%20Command-Line%20Interface):__
-- Download this repo. 
+- Download this repo.
 - Follow intructions to [build app using Cordova CLI](http://cordova.apache.org/docs/en/3.3.0/guide_cli_index.md.html#The%20Command-Line%20Interface)
 - Install App on device.
 
 Services Tested
 -
 These Oauth2 services have been tested with this plugin sucessfully:
-- __Google__ 
-- __Facebook__ 
-- __Instagram__ 
-- __Foursquare__ 
+- __Google__
+- __Facebook__
+- __Instagram__
+- __Foursquare__
 
 _* Let me know if any service is not working, feel free to send any pull-request for improvements._
