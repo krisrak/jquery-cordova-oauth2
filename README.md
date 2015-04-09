@@ -102,5 +102,6 @@ These Oauth2 services have been tested with this plugin sucessfully:
 - __Facebook__ 
 - __Instagram__ 
 - __Foursquare__ 
+- __LinkedIn__ 
 
 _* Let me know if any service is not working, feel free to send any pull-request for improvements._
