@@ -70,7 +70,9 @@ Notice that `token_url` and `client_secret` is not required for Implicit grant a
 ```
 
 __3) LinkedIn Oauth2 (Authorization code grant):__
-This example show how to make LinkedIn Oauth2 call, notice the `scope` parameter is sepcified in the `other_params` option as an object, linkedIn also requires `state` parameter, theis is also specified in the `other_params`. WARNING: Authorization code grant is not recomended for Cordova apps since the `client_secret` is exposed in the code and anyone can unpack an Adroid APK for example and get your `client_secret`. Always check if the service supports Implicit grant type of Oauth2 and use it instead of authorization code grant for your Cordova app.
+This example show how to make LinkedIn Oauth2 call, notice the `scope` parameter is sepcified in the `other_params` option as an object, linkedIn also requires `state` parameter, this is also specified in the `other_params`. 
+
+WARNING: Authorization code grant is not recomended for Cordova apps since the `client_secret` is exposed in the code and anyone can unpack an Adroid APK for example and get your `client_secret`. Always check if the service supports Implicit grant type of Oauth2 and use it instead of authorization code grant for your Cordova app.
 
 ```javascript
     $.oauth2({
