@@ -34,19 +34,16 @@ Usage
 
 __Example Oauth2 Calls:__
 
-__1) Google Oauth2 (Authorization code grant):__
-This example show how to make Google Oauth2 call, notice the `scope` parameter is sepcified in the `other_params` option as an object. The first callback function will return the `access_token` which can be passed to another function to save and make other API calls. The second callback function handle any errors.
+__1) Facebook Oauth2 (Implicit grant):__
+Notice that `token_url` and `client_secret` is not required for Implicit grant and `logout_url` is not specified since facebook does not not have a logout url. Facebook also required a special `display` parameter to be passed in the URL, this is specified in the `other_params`. The first callback function will return the `access_token` which can be passed to another function to save and make other API calls. The second callback function handle any errors.
 
 ```javascript
     $.oauth2({
-        auth_url: 'https://accounts.google.com/o/oauth2/auth',
-        response_type: 'code',
-        token_url: 'https://accounts.google.com/o/oauth2/token',
-        logout_url: 'https://accounts.google.com/logout',
-        client_id: 'CLIENT-ID-FROM-GOOGLE',
-        client_secret: 'CLIENT-SECRET-FROM-GOOGLE',
-        redirect_uri: 'http://www.yourwebsite.com/oauth2callback',
-        other_params: {scope:'profile'}
+        auth_url: 'https://www.facebook.com/dialog/oauth',
+        response_type: 'token',
+        client_id: 'CLIENT-ID-FROM-FACEBOOK',
+        redirect_uri: 'http://www.yourwebsite.com/redirect',
+        other_params: {scope: 'basic_info', display: 'popup'}
     }, function(token, response){
         makeAPICalls(token);
     }, function(error, response){
@@ -54,16 +51,36 @@ This example show how to make Google Oauth2 call, notice the `scope` parameter i
     }); 
 ```
 
-__2) Facebook Oauth2 (Implicit grant):__
-Notice that `token_url` and `client_secret` is not required for Implicit grant and `logout_url` is not specified since facebook does not not have a logout url. Facebook also required a special `display` parameter to be passed in the URL, this is specified in the `other_params`.
+__2) Google Oauth2 (Implicit grant):__
+Notice that `token_url` and `client_secret` is not required for Implicit grant and `logout_url` is specified, this will make sure that Google logout is called before showing Google login option.
 
 ```javascript
     $.oauth2({
-        auth_url: 'https://www.facebook.com/dialog/oauth',
+        auth_url: 'https://accounts.google.com/o/oauth2/auth',
         response_type: 'token',
-        client_id: 'CLIENT-ID-FROM-FACEBOOK',
-        redirect_uri: 'http://www.yourwebsite.com/oauth2callback',
-        other_params: {scope: 'basic_info', display: 'popup'}
+        logout_url: 'https://accounts.google.com/logout',
+        client_id: 'CLIENT-ID-FROM-GOOGLE',
+        redirect_uri: 'http://www.yourwebsite.com/redirect',
+        other_params: {scope: 'profile'}
+    }, function(token, response){
+        makeAPICalls(token);
+    }, function(error, response){
+        alert(error);
+    }); 
+```
+
+__3) LinkedIn Oauth2 (Authorization code grant):__
+This example show how to make LinkedIn Oauth2 call, notice the `scope` parameter is sepcified in the `other_params` option as an object, linkedIn also requires `state` parameter, theis is also specified in the `other_params`. WARNING: Authorization code grant is not recomended for Cordova apps since the `client_secret` is exposed in the code and anyone can unpack an Adroid APK for example and get your `client_secret`. Always check if the service supports Implicit grant type of Oauth2 and use it instead of authorization code grant for your Cordova app.
+
+```javascript
+    $.oauth2({
+        auth_url: 'https://www.linkedin.com/uas/oauth2/authorization',
+        response_type: 'code',
+        token_url: 'https://www.linkedin.com/uas/oauth2/accessToken',
+        client_id: 'CLIENT-ID-FROM-LINKEDIN',
+        client_secret: 'CLIENT-SECRET-FROM-LINKEDIN',
+        redirect_uri: 'http://www.yourwebsite.com/redirect',
+        other_params: {scope: 'r_basicprofile', state: 'somethingrandom1234'}
     }, function(token, response){
         makeAPICalls(token);
     }, function(error, response){
@@ -103,5 +120,7 @@ These Oauth2 services have been tested with this plugin sucessfully:
 - __Instagram__ 
 - __Foursquare__ 
 - __LinkedIn__ 
+
+here is [example code](https://github.com/krisrak/jquery-cordova-oauth2/blob/master/EXAMPLE.md)
 
 _* Let me know if any service is not working, feel free to send any pull-request for improvements._
