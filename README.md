@@ -3,7 +3,7 @@ jquery-cordova-oauth2
 
 __jQuery plugin for doing Oauth2 login in a Cordova App__
 
-This jquery plugin can be used to perform __Oauth2__ login in __Cordova__ app, it uses Cordova In-App-Browser to perform Oauth2 login flow and returns `access_token` or `error` in callback, along with actual response from the Oauth2 service.
+This jquery plugin can be used to perform __Oauth2__ login in __Cordova__ app, it uses __Cordova [In-App-Browser](https://github.com/apache/cordova-plugin-inappbrowser) Plugin__ to perform Oauth2 login flow and returns `access_token` or `error` in callback, along with actual response from the Oauth2 service.
 
 Features
 -
@@ -98,6 +98,7 @@ __1. Build App using [Intel XDK](http://xdk.intel.com):__
 - Download and install __Intel XDK__.
 - Open Intel XDK > New Project > __Import__ and point to this folder.
 - Open __index.html__ in editor and update __Oauth2 options__ (`client_id`, `client_secret`, ...) for the service you want to test.
+- Add __In-App-Browser__ Cordova plugin from the project settings.
 - Test in the Intel XDK __Emulator__.
 - Build your Cordova app by going to _Build_ tab in Intel XDK.
 - Install App on device.
@@ -112,6 +113,7 @@ __2. Build App using [Phonegap build](http://build.phonegap.com):__
 __3. Build App using [Cordova CLI](http://cordova.apache.org/docs/en/3.3.0/guide_cli_index.md.html#The%20Command-Line%20Interface):__
 - Download this repo. 
 - Follow intructions to [build app using Cordova CLI](http://cordova.apache.org/docs/en/3.3.0/guide_cli_index.md.html#The%20Command-Line%20Interface)
+- Add __In-App-Browser__ Cordova plugin
 - Install App on device.
 
 Services Tested
