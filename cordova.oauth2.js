@@ -120,8 +120,8 @@
                 }
             // if implicit method check for acces_token/error in url hash fragment
             } else if(options.response_type == "token") {
-                var access_token = url.split("access_token=")[1];
-                var error = url.split("error=")[1];
+                var access_token = url.getParam("access_token");
+                var error = url.getParam("error");
                 if(access_token || error){
                     loginWindow.close();
                     oauth2Logout(options);
