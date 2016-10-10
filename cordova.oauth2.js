@@ -82,7 +82,7 @@
         var login_url = options.auth_url + '?' + $.param(paramObj);
 
         // open Cordova inapp-browser with login url
-        var loginWindow = window.open(login_url, '_blank', 'location=yes');
+        var loginWindow = window.open(login_url, '_blank', 'location=yes,clearsessioncache=yes');
 
         // check if redirect url has code, access_token or error 
         $(loginWindow).on('loadstart', function(e) {
